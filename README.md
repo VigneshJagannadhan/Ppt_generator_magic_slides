@@ -3,9 +3,12 @@
 ## How to run
 - `git clone https://github.com/VigneshJagannadhan/Ppt_generator_magic_slides`
 - `cd indian_app_guy`
+- Create a .env with your own - SUPABASE_URL and ANON_KEY
 - `flutter pub get`
 - `flutter run`
 - Launch the app, open Settings, and add your MagicSlides `accessId`
+
+You can install the APK from Here : https://drive.google.com/file/d/1gWBIVzj8sRnmJcXQ4rcRyqCFfepv0f3x/view?usp=sharing
 
 ## Database used
 - Supabase for authentication
