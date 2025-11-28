@@ -80,4 +80,17 @@ class StorageService {
   clearDarkMode() async {
     await _sharedPreferences?.remove(AppConstants.spDarkMode);
   }
+
+  /// -------------------------- ACCESS TOKEN ----------------------------- ///
+  Future saveAccessId({required String value}) async {
+    await _secureStorage.write(key: AppConstants.spAccessId, value: value);
+  }
+
+  Future<String?> fetchAccessId() async {
+    return await _secureStorage.read(key: AppConstants.spAccessId);
+  }
+
+  clearAccessId() async {
+    await _secureStorage.delete(key: AppConstants.spAccessId);
+  }
 }

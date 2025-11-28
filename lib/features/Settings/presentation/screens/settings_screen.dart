@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:indian_app_guy/core/helpers/navigation_helper.dart';
+import 'package:indian_app_guy/features/Settings/presentation/screens/set_access_id_screen.dart';
 import 'package:indian_app_guy/shared/popups/general_popup_buttons.dart';
 import 'package:indian_app_guy/shared/providers/theme_provider.dart';
 import 'package:indian_app_guy/core/DI/locator.dart';
@@ -23,6 +25,15 @@ class SettingsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            PrimaryElevatedButton(
+              label: 'Set Access ID',
+              onTap:
+                  () => NavigationHelper.pushNamed(
+                    context: context,
+                    route: SetAccessIdScreen.route,
+                  ),
+            ),
+            SizedBox(height: 10.h),
             Consumer<ThemeProvider>(
               builder: (context, theme, _) {
                 return CustomSwitchWithLabel(
@@ -32,6 +43,7 @@ class SettingsScreen extends StatelessWidget {
                 );
               },
             ),
+
             SizedBox(height: 10.h),
             Consumer<AuthProvider>(
               builder: (context, auth, _) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:indian_app_guy/shared/providers/base_provider.dart';
 import 'package:indian_app_guy/shared/snackbars/general_snackbar.dart';
 import 'package:indian_app_guy/core/DI/locator.dart';
@@ -128,7 +127,18 @@ class HomeProvider extends BaseProvider {
     setLoading(true);
     var storageService = locator<StorageService>();
     var email = await storageService.fetchUserEmail();
-    var accessid = dotenv.env['ACCESS_ID'];
+    // var accessid = dotenv.env['ACCESS_ID'];
+    var accessid = await storageService.fetchAccessId();
+
+    if (accessid == null) {
+      if (!context.mounted) return;
+      showGeneralSnackbar(
+        context: context,
+        errorMessage: 'Please add your access Id from the settings to continue',
+      );
+      setLoading(false);
+      return;
+    }
 
     var data = {
       "topic": topic,

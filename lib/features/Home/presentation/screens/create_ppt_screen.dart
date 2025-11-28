@@ -50,6 +50,7 @@ class _CreatePPTScreenState extends State<CreatePPTScreen> {
   @override
   void initState() {
     super.initState();
+
     WidgetsBinding.instance.addPostFrameCallback((v) {
       context.read<HomeProvider>().reset();
     });
@@ -62,7 +63,8 @@ class _CreatePPTScreenState extends State<CreatePPTScreen> {
         return PopScope(
           onPopInvokedWithResult: (didPop, result) => home.reset(),
           child: Scaffold(
-            appBar: CustomAppbar(title: 'Create new PPT'),
+            appBar:
+                home.isLoading ? null : CustomAppbar(title: 'Create new PPT'),
             body: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Form(
@@ -107,6 +109,7 @@ class _CreatePPTScreenState extends State<CreatePPTScreen> {
                       controller: _slidesController,
                       validator: (value) => AppValidators.validateSlides(value),
                       label: 'No of Slides',
+                      keyboardType: TextInputType.number,
                     ),
                     SizedBox(height: 10.h),
                     CustomDropdown<String?>(
@@ -169,6 +172,7 @@ class _CreatePPTScreenState extends State<CreatePPTScreen> {
                           CustomTextFormField(
                             controller: _waterWController,
                             label: 'Watermark width',
+                            keyboardType: TextInputType.number,
                             validator:
                                 (value) => AppValidators.validateField(value),
                           ),
@@ -177,6 +181,7 @@ class _CreatePPTScreenState extends State<CreatePPTScreen> {
                             controller: _waterHController,
                             validator:
                                 (value) => AppValidators.validateField(value),
+                            keyboardType: TextInputType.number,
                             label: 'Watermark height',
                           ),
                           SizedBox(height: 10.h),

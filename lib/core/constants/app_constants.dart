@@ -10,6 +10,7 @@ class AppConstants {
 
   /// SP KEYS
   static const String spAccessToken = 'access_token_key';
+  static const String spAccessId = 'access_id_key';
   static const String spRefreshToken = 'refresh_token_key';
   static const String spUserId = 'user_id_key';
   static const String spUserEmail = 'user_email_key';

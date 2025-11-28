@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:indian_app_guy/core/DI/locator.dart';
+import 'package:indian_app_guy/core/services/storage_service.dart';
 import 'package:indian_app_guy/core/themes/app_colors.dart';
 import 'package:indian_app_guy/core/themes/app_styles.dart';
 import 'package:indian_app_guy/core/helpers/navigation_helper.dart';
 import 'package:indian_app_guy/features/Home/presentation/screens/create_ppt_screen.dart';
 import 'package:indian_app_guy/features/Home/presentation/widgets/custom_ppt_item.dart';
 import 'package:indian_app_guy/features/Settings/presentation/screens/settings_screen.dart';
+import 'package:indian_app_guy/shared/snackbars/general_snackbar.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String route = '/homeScreen';
@@ -55,11 +58,23 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton.extended(
         icon: Icon(Icons.add),
         label: Text('Create a new PPT', style: AppStyles.ts14W500cBlack),
-        onPressed:
-            () => NavigationHelper.pushNamed(
+        onPressed: () async {
+          var storageService = locator<StorageService>();
+          var accessid = await storageService.fetchAccessId();
+          if (accessid == null) {
+            if (!context.mounted) return;
+            showGeneralSnackbar(
               context: context,
-              route: CreatePPTScreen.route,
-            ),
+              errorMessage:
+                  'Please add your access Id from the settings to continue',
+            );
+            return;
+          }
+          NavigationHelper.pushNamed(
+            context: context,
+            route: CreatePPTScreen.route,
+          );
+        },
       ),
     );
   }
