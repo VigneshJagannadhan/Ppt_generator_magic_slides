@@ -1,16 +1,22 @@
-# indian_app_guy
+# Indian App Guy PPT Generator
 
-A new Flutter project.
+## How to run
+- `git clone https://github.com/VigneshJagannadhan/Ppt_generator_magic_slides`
+- `cd indian_app_guy`
+- `flutter pub get`
+- `flutter run`
+- Launch the app, open Settings, and add your MagicSlides `accessId`
 
-## Getting Started
+## Database used
+- Supabase for authentication
+- Local persistent storage only (`shared_preferences` for lightweight state)
 
-This project is a starting point for a Flutter application.
+## Architecture
+- Flutter app using clean architecture with feature-first foldering (`lib/features/*`)
+- Core services wired via a simple DI layer in `lib/core/DI`
+- Presentation generation flows rely on remote MagicSlides APIs
 
-A few resources to get you started if this is your first Flutter project:
+## Known issues
+- PPT API credits: MagicSlides returns `200` with `success: true` and text `"presentation generated successfully"` even when credits are exhausted (extra field says credits spent). Because errors are inferred from HTTP status/message, this scenario currently bypasses our handlers and the UI shows success while no PPT is created.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Access IDs for PPT generation were not provided by the team, so users must add their own locally from the settings screen before generating slides.

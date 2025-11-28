@@ -70,6 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
             );
             return;
           }
+
+          if (!context.mounted) return;
           NavigationHelper.pushNamed(
             context: context,
             route: CreatePPTScreen.route,
