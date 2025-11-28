@@ -12,10 +12,11 @@ You can install the APK from Here : https://drive.google.com/file/d/1gWBIVzj8sRn
 
 ## Database used
 - Supabase for authentication
-- Local persistent storage only (`shared_preferences` for lightweight state)
+- flutter_secure_storage for tokens
+- shared_preferences for other local data
 
 ## Architecture
-- Flutter app using clean architecture with feature-first foldering (`lib/features/*`)
+- Flutter app using Clean architecture with feature-first foldering (`lib/features/*`)
 - Core services wired via a simple DI layer in `lib/core/DI`
 - Presentation generation flows rely on remote MagicSlides APIs
 
