@@ -1,0 +1,76 @@
+name: indian_app_guy
+description: "A new Flutter project."
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.9.0
+  json_annotation: ^4.9.0
+  get_it: ^9.1.0
+  provider: ^6.1.5+1
+  fpdart: ^1.2.0
+  cached_network_image: ^3.4.1
+  infinite_scroll_pagination: ^5.1.1
+  pull_to_refresh: ^2.0.0
+  cupertino_icons: ^1.0.8
+  flutter_screenutil: ^5.9.3
+  supabase_flutter: ^2.10.3
+  flutter_dotenv: ^6.0.0
+  flutter_secure_storage: ^9.2.4
+  shared_preferences: ^2.5.3
+  flutter_svg: ^2.2.2
+  pdfx: ^2.9.2
+  path_provider: ^2.1.5
+  open_filex: ^4.7.0
+  lottie: ^3.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  json_serializable: ^6.9.5
+  build_runner: ^2.5.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
+    - assets/images/
+    - assets/svgs/
+    - assets/lotties/
+
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
